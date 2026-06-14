@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: qouve-documentation
     restart: always
+    labels:
+      - "coolify.port=5000"
     environment:
       - SITE_BASE_URL=${SERVICE_FQDN}
       - DB_TYPE=${DB_TYPE:-sqlite}
@@ -21,7 +23,6 @@ services:
       - SITE_TITLE=${SITE_TITLE:-Mdoc}
       - SITE_DESCRIPTION=${SITE_DESCRIPTION:-Documentation System}
     volumes:
-      # Mappt den Ordner für die SQLite-Datenbank aus dem Container auf das persistente Volume
       - qouve_docs_data:/app/api/data
 
 volumes:
