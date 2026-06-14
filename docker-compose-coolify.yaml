@@ -4,11 +4,11 @@ services:
   docs:
     build:
       context: .
+      dockerfile: Dockerfile
     container_name: qouve-documentation
     restart: always
     environment:
       - SITE_BASE_URL=${SERVICE_FQDN}
-
       - DB_TYPE=${DB_TYPE:-sqlite}
       - DB_HOST=${DB_HOST:-localhost}
       - DB_PORT=${DB_PORT:-3306}
@@ -16,13 +16,12 @@ services:
       - DB_USER=${DB_USER:-mdoc_user}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_PATH=${DB_PATH:-api/data/analytics.db}
-
       - DISCORD_WEBHOOK_URL
       - GITHUB_TOKEN
-
       - SITE_TITLE=${SITE_TITLE:-Mdoc}
       - SITE_DESCRIPTION=${SITE_DESCRIPTION:-Documentation System}
     volumes:
+      # Mappt den Ordner für die SQLite-Datenbank aus dem Container auf das persistente Volume
       - qouve_docs_data:/app/api/data
 
 volumes:
