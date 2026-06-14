@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GITHUB_REPO = "EPI-Studios/Moud-Documentation"
+GITHUB_REPO = "QouveCreations/Qouve-Documentation"
 DOCS_DIR = os.path.join(os.path.dirname(__file__), 'templates', 'docs')
 
 GITHUB_API_ENABLED = os.getenv("ENABLE_GITHUB_API", "0").strip().lower() in {"1", "true", "yes", "on"}
